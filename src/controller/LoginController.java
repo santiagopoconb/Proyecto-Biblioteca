@@ -47,7 +47,7 @@ public class LoginController implements Initializable {
     @FXML
     private void eventAction (ActionEvent event){
         String cui = "abc";
-        String pass = "1234";
+        String pass = "12345";
         
         String identificacion = txUsuario.getText();
         String contrasenia = txContrasenia.getText();
