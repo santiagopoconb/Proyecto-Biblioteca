@@ -4,6 +4,8 @@
  */
 package modelado;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author santi
@@ -15,7 +17,9 @@ public class Usuario {
     private String direccion;
     private int telefono;
     private String corrreo;
+    private String correoConfirmacion;
     private String password;
+    private String passwordConfirmacion;
     private TipoUsuario rol;
     private int idUsuario;
     
@@ -23,9 +27,49 @@ public class Usuario {
         admin,
         cliente
     }
-
+    
+    ArrayList <Usuario> listaUsuario = new ArrayList<>();
+    
     public String getIdentificacion() {
         return identificacion;
+    }
+
+    public Usuario(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol, int idUsuario) {
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.corrreo = corrreo;
+        this.correoConfirmacion = correoConfirmacion;
+        this.password = password;
+        this.passwordConfirmacion = passwordConfirmacion;
+        this.rol = rol;
+        this.idUsuario = idUsuario;
+    }
+    
+    public String getCorreoConfirmacion() {
+        return correoConfirmacion;
+    }
+
+    public void setCorreoConfirmacion(String correoConfirmacion) {
+        this.correoConfirmacion = correoConfirmacion;
+    }
+
+    public String getPasswordConfirmacion() {
+        return passwordConfirmacion;
+    }
+
+    public void setPasswordConfirmacion(String passwordConfirmacion) {
+        this.passwordConfirmacion = passwordConfirmacion;
+    }
+
+    public ArrayList<Usuario> getListaUsuario() {
+        return listaUsuario;
+    }
+
+    public void setListaUsuario(ArrayList<Usuario> listaUsuario) {
+        this.listaUsuario = listaUsuario;
     }
 
     public void setIdentificacion(String identificacion) {
@@ -84,5 +128,18 @@ public class Usuario {
         return password;
     }
     
+    public void agregarUsuario(Usuario usuarioNuevo){
+     listaUsuario.add(usuarioNuevo);
+     for (Usuario impresion:listaUsuario){
+         System.out.println(impresion.getIdentificacion()
+         + impresion.getNombres()
+         + impresion.getApellidos()
+         + impresion.getTelefono()
+         + impresion.getDireccion()
+         + impresion.getCorrreo()
+         + impresion.getPassword()
+         + impresion.getRol());
+     }
+    }
     
 }

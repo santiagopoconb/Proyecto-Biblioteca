@@ -4,18 +4,25 @@
  */
 package controller;
 
+import java.io.IOException;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import modelado.Mensajes;
 
 /**
  * FXML Controller class
@@ -39,12 +46,17 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnResetContrasenia;
     
+    private String titulo;
+    private String mensaje;
+    
+    Mensajes mostrarAlerta = new Mensajes();  
+    
     @FXML
     private void eventKey(KeyEvent event){
         
     }
     
-    @FXML
+    @FXML // Login principal del programa
     private void eventAction (ActionEvent event){
         String cui = "abc";
         String pass = "1234567";
@@ -53,32 +65,42 @@ public class LoginController implements Initializable {
         String contrasenia = txContrasenia.getText();
         
         if (identificacion.equals(cui) && contrasenia.equals(pass)){
-        mostrarAlerta("Bienvenido","Ingreso existoso");
+        
+        titulo = "Bienvenido";
+        mensaje = "Ingreso exitoso";
+        mostrarAlerta.crearMensaje(titulo, mensaje);
+        
         cerrarVentana();
         } else {
-            mostrarAlerta("Error", "Usuario o contrasenia incorrecta");
+            titulo = "Error";
+            mensaje = "Usuario o contraseña incorrectos";
+            mostrarAlerta.crearMensaje(titulo, mensaje);
         }
         
     }
     
-    @FXML
+    @FXML // Llama a la ventana para crear usuario
     private void eventAction2(ActionEvent event){
-        mostrarAlerta("Crear Usuario", "Metodo para agrebar usuario cliente");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/visual/CrearUsuario.fxml"));
+            Scene scene = new Scene(root);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            
+            //Stage stage = (Stage) btnAgregarUsuarioCliente.getScene().getWindow();
+            //stage.close();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML
     private void eventAction3(ActionEvent event){
-        mostrarAlerta("Reset", "Metodo poara reinicio de contrasenia");
-    }
     
-    private void mostrarAlerta (String titulo, String mensaje){
-        Alert alerta = new Alert(AlertType.INFORMATION);
-        alerta.setTitle(titulo);
-        alerta.setHeaderText(null);
-        alerta.setContentText(mensaje);
-        alerta.showAndWait();
     }
-    
+       
     private void cerrarVentana (){
         Stage stage = (Stage) btnIngresar.getScene().getWindow();
         stage.close();

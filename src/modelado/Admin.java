@@ -14,7 +14,7 @@ public class Admin extends Usuario{
     public String mensajeUsuario = "Ingrese su usuario:";
     public String mensajePassword = "Ingrese su contraseña:";
     Scanner teclado = new Scanner(System.in);
-    
+      
     
     public void agregarUsuario(String identificacion, String password){
         System.out.println(mensajeUsuario);
@@ -27,7 +27,7 @@ public class Admin extends Usuario{
         } else {
             System.out.println("Usuario o contraseña incorrecta");
         }
-        
+      
     }
     
     public void eliminarUsuario(){
