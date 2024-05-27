@@ -11,31 +11,11 @@ import java.util.Scanner;
  * @author santi
  */
 public class Admin extends Usuario{
-    public String mensajeUsuario = "Ingrese su usuario:";
-    public String mensajePassword = "Ingrese su contraseña:";
-    Scanner teclado = new Scanner(System.in);
-      
-    
-    public void agregarUsuario(String identificacion, String password){
-        System.out.println(mensajeUsuario);
-        String intUsuario = teclado.nextLine();
-        System.out.println(mensajePassword);
-        String intPassword = teclado.nextLine();
-        
-        if (intUsuario.equals(identificacion) && intPassword.equals(password)) {
-            System.out.println("Ingrese los datos del nuevo usuario:");
-        } else {
-            System.out.println("Usuario o contraseña incorrecta");
-        }
-      
+ 
+    public Admin(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol, int idUsuario) {
+        super(identificacion, nombres, apellidos, direccion, telefono, corrreo, correoConfirmacion, password, passwordConfirmacion, rol, idUsuario);
+    }
+ 
     }
     
-    public void eliminarUsuario(){
-        
-    }
-    
-    public void modificarUsuario(){
-        
-    }
-    
-}
+
