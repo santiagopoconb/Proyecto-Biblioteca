@@ -4,7 +4,8 @@
  */
 package modelado;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -14,10 +15,20 @@ public class Libro {
     private String isbn;
     private String titulo;
     private String autor;
-    private LocalDate anioPublicacion;
+    private int anioPublicacion;
     private String editorial;
     private int cantidadLibros;
-
+    ArrayList<Libro> listaLibros = new ArrayList<>();
+    
+    public Libro(String isbn, String titulo, String autor, int anioPublicacion, String editorial, int cantidadLibros) {
+        this.isbn = isbn;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anioPublicacion = anioPublicacion;
+        this.editorial = editorial;
+        this.cantidadLibros = cantidadLibros;
+    }  
+    
     public String getIsbn() {
         return isbn;
     }
@@ -42,11 +53,11 @@ public class Libro {
         this.autor = autor;
     }
 
-    public LocalDate getAnioPublicacion() {
+    public int getAnioPublicacion() {
         return anioPublicacion;
     }
 
-    public void setAnioPublicacion(LocalDate anioPublicacion) {
+    public void setAnioPublicacion(int anioPublicacion) {
         this.anioPublicacion = anioPublicacion;
     }
 
@@ -66,6 +77,16 @@ public class Libro {
         this.cantidadLibros = cantidadLibros;
     }
     
-    
+    public void agregarLibro(Libro nuevoLibro){
+        listaLibros.add(nuevoLibro);
+        for (Libro impresion:listaLibros){
+            System.out.println(impresion.getIsbn() + "-"
+                    + impresion.getTitulo() + "-"
+                    + impresion.getAutor() + "-"
+                    + impresion.getAnioPublicacion() + "-"
+                    + impresion.getEditorial() + "-"
+                    + impresion.getCantidadLibros());
+        }
+    }
     
 }

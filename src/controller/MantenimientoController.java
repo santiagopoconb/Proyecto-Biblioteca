@@ -27,7 +27,7 @@ public class MantenimientoController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private Button btnAgregarLIbro;
+    private Button btnAgregarLibro;
     @FXML
     private Button btnModificarLibro;
     @FXML
@@ -71,9 +71,10 @@ public class MantenimientoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         btnCrearUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/CrearUsuarioAdmin.fxml"));
+        btnAgregarLibro.setOnAction(event -> vistaVentanaLibro("/visual/CrearLibro.fxml"));
     }    
     
-         private void vistaVentanaUsuario (String fxml){
+    private void vistaVentanaUsuario (String fxml){
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxml));
             
@@ -84,4 +85,17 @@ public class MantenimientoController implements Initializable {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void vistaVentanaLibro (String fxml){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(fxml));
+            
+            stackLibro.getChildren().clear();
+            stackLibro.getChildren().add(root);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

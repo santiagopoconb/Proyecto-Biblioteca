@@ -1,11 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CrearLibroController">
-    
+
+<AnchorPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controller.CrearLibroController">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="Registro de libros" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutX="-1.0" layoutY="46.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label text="ISBN:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Título:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Autor:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Año de publicación:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Editorial:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Cantidad de libros:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <TextField fx:id="txtIsbn" onKeyTyped="#eventKey">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="1.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtTitulo" onKeyTyped="#eventKey">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="1.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAutor" onKeyTyped="#eventKey">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="1.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtPublicacion" onKeyTyped="#eventKey">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="1.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtEditorial" onKeyTyped="#eventKey">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="1.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtCantidadLibros" onKeyTyped="#eventKey">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="1.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button fx:id="btnRegistrarLibro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventKeyCrearLibro" text="Registrar">
+                     <VBox.margin>
+                        <Insets top="1.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

@@ -44,7 +44,7 @@
                      <children>
                         <VBox prefHeight="37.0" prefWidth="199.0">
                            <children>
-                              <Button fx:id="btnAgregarLIbro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventKeyAgregarLibro" prefWidth="119.0" text="Agregar libro" />
+                              <Button fx:id="btnAgregarLibro" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventKeyAgregarLibro" prefWidth="119.0" text="Agregar libro" />
                            </children>
                         </VBox>
                         <VBox prefHeight="37.0" prefWidth="189.0">
