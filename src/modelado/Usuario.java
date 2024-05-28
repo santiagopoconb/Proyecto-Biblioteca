@@ -4,6 +4,7 @@
  */
 package modelado;
 
+import baseDatos.UsuarioBd;
 import java.util.ArrayList;
 
 /**
@@ -129,7 +130,13 @@ public class Usuario {
         return password;
     }
     
-    public void agregarUsuario(Usuario usuarioNuevo){
+    public void agregarUsuario (Usuario usuarioNuevo){
+        UsuarioBd nuevoUsuariobd = new UsuarioBd();
+        nuevoUsuariobd.crearUsuario(usuarioNuevo);
+    }
+    
+    
+    /*public void agregarUsuario(Usuario usuarioNuevo){
      listaUsuario.add(usuarioNuevo);
      for (Usuario impresion:listaUsuario){
          System.out.println(impresion.getIdentificacion()
@@ -143,6 +150,7 @@ public class Usuario {
          + impresion.getIdUsuario());
      }
     }
+    */
     
     private String generarIdUusario(){
         return identificacion + contadorIdUsuario++;

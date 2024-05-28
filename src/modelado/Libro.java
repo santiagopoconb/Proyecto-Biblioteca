@@ -4,6 +4,7 @@
  */
 package modelado;
 
+import baseDatos.LibroBd;
 import java.util.ArrayList;
 
 
@@ -78,6 +79,12 @@ public class Libro {
     }
     
     public void agregarLibro(Libro nuevoLibro){
+        LibroBd nuevoLibroBd = new LibroBd();
+        nuevoLibroBd.crearLibro(nuevoLibro);
+    }
+    
+    
+    /*public void agregarLibro(Libro nuevoLibro){
         listaLibros.add(nuevoLibro);
         for (Libro impresion:listaLibros){
             System.out.println(impresion.getIsbn() + "-"
@@ -88,5 +95,5 @@ public class Libro {
                     + impresion.getCantidadLibros());
         }
     }
-    
+    */
 }
