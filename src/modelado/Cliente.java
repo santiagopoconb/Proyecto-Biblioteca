@@ -10,8 +10,8 @@ package modelado;
  */
 public class Cliente extends Usuario{
     
-    public Cliente(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol, int idUsuario) {
-        super(identificacion, nombres, apellidos, direccion, telefono, corrreo, correoConfirmacion, password, passwordConfirmacion, rol, idUsuario);
+    public Cliente(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol) {
+        super(identificacion, nombres, apellidos, direccion, telefono, corrreo, correoConfirmacion, password, passwordConfirmacion, rol);
     }
     
 }

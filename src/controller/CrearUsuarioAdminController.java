@@ -71,7 +71,6 @@ public class CrearUsuarioAdminController implements Initializable {
         String password = txtConraseniaAdmin.getText();
         String passwordConfirmacion = txtContraseniaConfirmacionAdmin.getText();
         Usuario.TipoUsuario rolAdmin = txtRolAdmin.getValue();
-        int idUsuario= 1;
         int telefono;
         
         if (identificacion.isEmpty()
@@ -99,7 +98,7 @@ public class CrearUsuarioAdminController implements Initializable {
         mostrarAlerta.crearMensaje("Error", "Error en confirmación de correo o contraseña");
         return;
     }
-        Admin usuarioNuevo = new Admin (identificacion, nombres, apellidos, direccion, telefono, correo, correoConfirmacion, password, passwordConfirmacion, rolAdmin, idUsuario);
+        Admin usuarioNuevo = new Admin (identificacion, nombres, apellidos, direccion, telefono, correo, correoConfirmacion, password, passwordConfirmacion, rolAdmin);
         usuarioNuevo.agregarUsuario(usuarioNuevo);
         
         limpiarCampos();

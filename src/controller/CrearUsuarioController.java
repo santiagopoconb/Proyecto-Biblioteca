@@ -74,7 +74,6 @@ public class CrearUsuarioController implements Initializable {
     String password = txtConrasenia.getText();
     String passwordConfirmacion = txtContraseniaConfirmacion.getText();
     Usuario.TipoUsuario rol = cliente;
-    int idUsuario= 1;
     int telefono;
     
     if (identificacion.isEmpty()
@@ -102,7 +101,7 @@ public class CrearUsuarioController implements Initializable {
         return;
     }
         
-    Cliente usuarioNuevo = new Cliente(identificacion, nombres, apellidos, direccion, telefono, correo, correoConfirmacion, password, passwordConfirmacion, rol, idUsuario);
+    Cliente usuarioNuevo = new Cliente(identificacion, nombres, apellidos, direccion, telefono, correo, correoConfirmacion, password, passwordConfirmacion, rol);
     usuarioNuevo.agregarUsuario(usuarioNuevo);
     
     limpiarCampos();

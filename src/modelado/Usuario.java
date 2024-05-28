@@ -21,7 +21,8 @@ public class Usuario {
     private String password;
     private String passwordConfirmacion;
     private TipoUsuario rol;
-    private int idUsuario;
+    private String idUsuario;
+    private static int contadorIdUsuario = 1;
     
     public enum TipoUsuario{
         admin,
@@ -34,7 +35,7 @@ public class Usuario {
         return identificacion;
     }
 
-    public Usuario(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol, int idUsuario) {
+    public Usuario(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol) {
         this.identificacion = identificacion;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -45,7 +46,11 @@ public class Usuario {
         this.password = password;
         this.passwordConfirmacion = passwordConfirmacion;
         this.rol = rol;
-        this.idUsuario = idUsuario;
+        this.idUsuario = generarIdUusario();
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
     }
     
     public String getCorreoConfirmacion() {
@@ -116,12 +121,8 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
     public String getCorrreo() {
-        return corrreo;
+    return corrreo;
     }
 
     public String getPassword() {
@@ -138,8 +139,13 @@ public class Usuario {
          + impresion.getDireccion()
          + impresion.getCorrreo()
          + impresion.getPassword()
-         + impresion.getRol());
+         + impresion.getRol()
+         + impresion.getIdUsuario());
      }
+    }
+    
+    private String generarIdUusario(){
+        return identificacion + contadorIdUsuario++;
     }
     
 }

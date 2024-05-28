@@ -46,9 +46,6 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnResetContrasenia;
     
-    private String titulo;
-    private String mensaje;
-    
     Mensajes mostrarAlerta = new Mensajes();  
     
     @FXML
@@ -59,22 +56,29 @@ public class LoginController implements Initializable {
     @FXML // Login principal del programa
     private void eventAction (ActionEvent event){
         String cui = "abc";
-        String pass = "1234567";
+        String pass = "123";
         
         String identificacion = txUsuario.getText();
         String contrasenia = txContrasenia.getText();
         
         if (identificacion.equals(cui) && contrasenia.equals(pass)){
         
-        titulo = "Bienvenido";
-        mensaje = "Ingreso exitoso";
-        mostrarAlerta.crearMensaje(titulo, mensaje);
+            try {
+                cerrarVentana();
+                
+                Parent root = FXMLLoader.load(getClass().getResource("/visual/Principal.fxml"));
+                Scene scene = new Scene(root);
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
-        cerrarVentana();
+        
         } else {
-            titulo = "Error";
-            mensaje = "Usuario o contraseña incorrectos";
-            mostrarAlerta.crearMensaje(titulo, mensaje);
+
+            mostrarAlerta.crearMensaje("Error", "Usuario o contraseña incorrectos");
         }
         
     }

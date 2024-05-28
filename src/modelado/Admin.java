@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public class Admin extends Usuario{
  
-    public Admin(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol, int idUsuario) {
-        super(identificacion, nombres, apellidos, direccion, telefono, corrreo, correoConfirmacion, password, passwordConfirmacion, rol, idUsuario);
+    public Admin(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol) {
+        super(identificacion, nombres, apellidos, direccion, telefono, corrreo, correoConfirmacion, password, passwordConfirmacion, rol);
     }
  
     }
