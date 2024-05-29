@@ -21,6 +21,10 @@ public class Libro {
     private int cantidadLibros;
     ArrayList<Libro> listaLibros = new ArrayList<>();
     
+    public Libro(){
+        
+    }
+    
     public Libro(String isbn, String titulo, String autor, int anioPublicacion, String editorial, int cantidadLibros) {
         this.isbn = isbn;
         this.titulo = titulo;

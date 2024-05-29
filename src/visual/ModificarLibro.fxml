@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModificarLibroController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Modificar libro">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtModificarLi" layoutX="14.0" layoutY="55.0" onKeyTyped="#eventKey">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnBuscarLi" layoutX="214.0" layoutY="58.0" mnemonicParsing="false" onAction="#eventKeyBuscarLibro" text="Buscar usuario" />
+      <TextField fx:id="txtTitulo" editable="false" layoutX="107.0" layoutY="139.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtAutor" editable="false" layoutX="107.0" layoutY="173.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtAnio" editable="false" layoutX="107.0" layoutY="207.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtEditorial" editable="false" layoutX="107.0" layoutY="240.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtCantidad" editable="false" layoutX="107.0" layoutY="275.0" onKeyTyped="#eventKey" />
+      <Label layoutX="15.0" layoutY="143.0" text="Título:" />
+      <Label layoutX="15.0" layoutY="177.0" text="Autor:" />
+      <Label layoutX="15.0" layoutY="211.0" text="Año publicacion:" />
+      <Label layoutX="15.0" layoutY="244.0" text="Edtorial:" />
+      <Label layoutX="14.0" layoutY="279.0" text="Cantidad:" />
+      <Label layoutX="16.0" layoutY="109.0" text="Información actual:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTituloEd" layoutX="284.0" layoutY="139.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtAutorEdi" layoutX="284.0" layoutY="173.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtAnioEd" layoutX="284.0" layoutY="207.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtEditorialEd" layoutX="284.0" layoutY="240.0" onKeyTyped="#eventKey" />
+      <TextField fx:id="txtCantidadEd" layoutX="284.0" layoutY="275.0" onKeyTyped="#eventKey" />
+      <Label layoutX="284.0" layoutY="109.0" text="Información a modificar:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <Button fx:id="btnActualizarLi" layoutX="320.0" layoutY="58.0" mnemonicParsing="false" onAction="#eventKeyActualizarLibro" text="Actualizar" />
+   </children>
+</AnchorPane>

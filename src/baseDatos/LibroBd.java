@@ -71,10 +71,115 @@ public class LibroBd {
         }
             
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioBd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return false;
     }
+    
+    public Libro leerLibro(String isb){
+        PreparedStatement st = null;
+            ResultSet rs = null;
+            Libro u1 = null;
+            
+        try {
+           String sql = """
+                        SELECT * FROM libro WHERE isbn = ?;
+                        """;
+            
+            st = conn.prepareStatement(sql);
+            st.setString(1, isb);
+            rs = st.executeQuery();
+            
+            if (rs.next()){
+                u1 = new Libro();
+                u1.setIsbn(rs.getString("isbn"));
+                u1.setTitulo(rs.getString("titulo"));
+                u1.setAutor(rs.getString("autor"));
+                u1.setAnioPublicacion(rs.getInt("anio_publicacion"));
+                u1.setEditorial(rs.getString("editorial"));
+                u1.setCantidadLibros(rs.getInt("cantidad_libros"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null){
+                    rs.close();
+                } 
+                
+                if (st != null){
+                st.close();
+                }        
+            } catch (SQLException ex) {
+                    Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        return u1;
+    }
+    
+    public void eliminarLibro(String isb){
+        PreparedStatement st = null;
+        
+        try {
+                    
+            String sql = """
+                                 DELETE FROM libro WHERE isbn = ?;
+                                 """;
+            
+            st = conn.prepareStatement(sql);
+            st.setString(1, isb);
+            st.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (st != null){
+            try {
+                st.close();
+                }        
+             catch (SQLException ex) {
+                    Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }    
+    }
+    
+    public void actualizarLibro(Libro u2){
+        PreparedStatement st = null;
+        
+        try {
+                    
+            String sql = """
+                                 UPDATE libro SET titulo = ?, autor = ?, anio_publicacion = ?, editorial = ?, cantidad_libros = ?
+                                    WHERE isbn = ?;
+                                 """;
+            
+            st = conn.prepareStatement(sql);
+            
+            st.setString(1, u2.getTitulo());
+            st.setString(2, u2.getAutor());
+            st.setInt(3, u2.getAnioPublicacion());
+            st.setString(4, u2.getEditorial());
+            st.setInt(5, u2.getCantidadLibros());
+            st.setString(6, u2.getIsbn());
+            
+            st.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (st != null){
+            try {
+                st.close();
+                }        
+             catch (SQLException ex) {
+                    Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } 
+    }
+    
 }
 

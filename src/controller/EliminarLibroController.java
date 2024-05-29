@@ -4,7 +4,7 @@
  */
 package controller;
 
-import baseDatos.UsuarioBd;
+import baseDatos.LibroBd;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,8 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import modelado.Libro;
 import modelado.Mensajes;
-import modelado.Usuario;
 
 /**
  * FXML Controller class
@@ -27,50 +27,50 @@ public class EliminarLibroController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private TextField txtEliminarUsuario;
+    private TextField txtEliminarLibro;
     @FXML
-    private TextField txtNombreUsuario;
+    private TextField txtTituloLibro;
     @FXML
-    private TextField txtApellidosUsuario;
+    private TextField txtAutorLibro;
     @FXML
-    private TextField txtCorreoUsuario;
+    private TextField txtCantidadLibro;
     @FXML
-    private Button btnBuscarUsuario;
+    private Button btnBuscarLibro;
     @FXML
-    private Button btnEliminarUsuario;
+    private Button btnEliminarLibro;
     
     Mensajes mostrarAlerta = new Mensajes();
     
     @FXML
     private void eventKey(KeyEvent event){
+        
     }
     
     @FXML
-    private void eventKeyBuscarUsuario(ActionEvent event){
-        String identificion = txtEliminarUsuario.getText();
+    private void eventKeyBuscarLibro(ActionEvent event){
+        String isbn = txtEliminarLibro.getText();
         
-        UsuarioBd nuevaConsulta = new UsuarioBd();
-        Usuario id = nuevaConsulta.leerUsuario(identificion);
+        LibroBd nuevaConsulta = new LibroBd();
+        Libro id = nuevaConsulta.leerLibro(isbn);
        
         if(id != null){
-            txtNombreUsuario.setText(id.getNombres());
-            
-            txtApellidosUsuario.setText(id.getApellidos());
-            txtCorreoUsuario.setText(id.getCorrreo());
+            txtTituloLibro.setText(id.getTitulo());
+            txtAutorLibro.setText(id.getAutor());
+            txtCantidadLibro.setText(String.valueOf(id.getCantidadLibros()));
         } else {
-            mostrarAlerta.crearMensaje("Error", "Usuario no existe");
-        }        
-        
+            mostrarAlerta.crearMensaje("Error", "Libro no existe");
+        }
     }
     
     @FXML
-    private void eventKeyEliminarUsuario(ActionEvent event){
-        String identificion = txtEliminarUsuario.getText();
-        UsuarioBd eliminarRegistro = new UsuarioBd();
-        eliminarRegistro.eliminarUsuario(identificion);
+    private void eventKeyEliminarLibro(ActionEvent event){
+        String isbn = txtEliminarLibro.getText();
+        LibroBd eliminarRegistro = new LibroBd();
+        eliminarRegistro.eliminarLibro(isbn);
         mostrarAlerta.crearMensaje("Aviso", "Registro eliminado correctamente");
         limpiarCampos();
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -78,9 +78,9 @@ public class EliminarLibroController implements Initializable {
     }    
     
     public void limpiarCampos(){
-        txtEliminarUsuario.clear();
-        txtNombreUsuario.clear();
-        txtApellidosUsuario.clear();
-        txtCorreoUsuario.clear();
+    txtEliminarLibro.clear();
+    txtTituloLibro.clear();
+    txtAutorLibro.clear();
+    txtCantidadLibro.clear();
     }
 }

@@ -58,6 +58,9 @@
                            </children>
                         </VBox>
                      </children>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
                   </HBox>
                </top>
                <center>
@@ -91,6 +94,9 @@
                            </children>
                         </VBox>
                      </children>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
                   </HBox>
                </top>
                <center>

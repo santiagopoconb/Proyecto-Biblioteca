@@ -72,9 +72,11 @@ public class MantenimientoController implements Initializable {
         // TODO
         btnCrearUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/CrearUsuarioAdmin.fxml"));
         btnModificarUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/ModificarUsuario.fxml"));
-        btnEliminarUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/EliminarLibro.fxml"));
+        btnEliminarUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/EliminarUsuario.fxml"));
         
         btnAgregarLibro.setOnAction(event -> vistaVentanaLibro("/visual/CrearLibro.fxml"));
+        btnModificarLibro.setOnAction(event -> vistaVentanaLibro("/visual/ModificarLibro.fxml"));
+        btnEliminarLibro.setOnAction(event -> vistaVentanaLibro("/visual/EliminarLibro.fxml"));
         
     }    
     
