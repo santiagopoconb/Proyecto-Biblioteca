@@ -4,6 +4,7 @@
  */
 package controller;
 
+import baseDatos.LibroBd;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -42,6 +43,7 @@ public class CrearLibroController implements Initializable {
     private Button btnRegistrarLibro;
     
     Mensajes mostrarAlerta = new Mensajes();
+    LibroBd nuevoLibro = new LibroBd();
     
     @FXML
     private void eventKey (KeyEvent event){
@@ -78,13 +80,17 @@ public class CrearLibroController implements Initializable {
         return;
         }
         
-        Libro nuevoLibro = new Libro(isbn, titulo, autor, anioPublicacion, editorial, cantidadLibros);
-        nuevoLibro.agregarLibro(nuevoLibro);
+        if (nuevoLibro.verificarLibro(isbn)){
+            mostrarAlerta.crearMensaje("Error", "Libro ya existe");
+        } else {
+            Libro nuevoLibro = new Libro(isbn, titulo, autor, anioPublicacion, editorial, cantidadLibros);
+            nuevoLibro.agregarLibro(nuevoLibro);
         
-        limpiarCamposLibro();
+            limpiarCamposLibro();
         
-        mostrarAlerta.crearMensaje("Aviso", "Libro agregado correctamente");
-        
+            mostrarAlerta.crearMensaje("Aviso", "Libro agregado correctamente");
+        }
+                
     }
     
     private void limpiarCamposLibro(){

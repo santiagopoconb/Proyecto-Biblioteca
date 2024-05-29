@@ -51,5 +51,30 @@ public class LibroBd {
             }
         }
     }
+    
+    public boolean verificarLibro(String isb){
+        PreparedStatement st = null;
+        
+        String sql = """
+                    SELECT COUNT(*) FROM libro WHERE isbn = ?;
+                     """;
+        
+        try {
+            st = conn.prepareStatement(sql);
+            
+            st.setString(1, isb);
+                        
+            try (ResultSet rs = st.executeQuery()){
+            if (rs.next()){
+                return rs.getInt(1) > 0;
+            }
+        }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioBd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
 }
 

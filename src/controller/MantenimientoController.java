@@ -71,7 +71,11 @@ public class MantenimientoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         btnCrearUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/CrearUsuarioAdmin.fxml"));
+        btnModificarUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/ModificarUsuario.fxml"));
+        btnEliminarUsuario.setOnAction(event -> vistaVentanaUsuario("/visual/EliminarLibro.fxml"));
+        
         btnAgregarLibro.setOnAction(event -> vistaVentanaLibro("/visual/CrearLibro.fxml"));
+        
     }    
     
     private void vistaVentanaUsuario (String fxml){

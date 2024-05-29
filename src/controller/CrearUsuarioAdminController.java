@@ -4,6 +4,8 @@
  */
 package controller;
 
+import baseDatos.UsuarioBd;
+import java.sql.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -54,6 +56,7 @@ public class CrearUsuarioAdminController implements Initializable {
     @FXML
     private Button btnCrearUsuarioAdmin;
     Mensajes mostrarAlerta = new Mensajes();
+    UsuarioBd nuevoUsuario = new UsuarioBd();
     @FXML
     private void eventKey(KeyEvent event){
     }
@@ -98,15 +101,21 @@ public class CrearUsuarioAdminController implements Initializable {
         mostrarAlerta.crearMensaje("Error", "Error en confirmación de correo o contraseña");
         return;
     }
+    
+    if(nuevoUsuario.verificarIdentificacion(identificacion)){
+        
+        mostrarAlerta.crearMensaje("Error", "Identificacion ya existe");
+    } else {
         Admin usuarioNuevo = new Admin (identificacion, nombres, apellidos, direccion, telefono, correo, correoConfirmacion, password, passwordConfirmacion, rolAdmin);
         usuarioNuevo.agregarUsuario(usuarioNuevo);
-        
         limpiarCampos();
         
-        Stage stage = (Stage) btnCrearUsuarioAdmin.getScene().getWindow();
-        stage.close();
+        //Stage stage = (Stage) btnCrearUsuarioAdmin.getScene().getWindow();
+        //stage.close();
     
         mostrarAlerta.crearMensaje("Felicidades", "Usuario creado exitosamente");
+    }
+               
     }
        
     

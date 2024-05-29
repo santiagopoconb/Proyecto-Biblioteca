@@ -4,6 +4,7 @@
  */
 package modelado;
 
+import java.sql.*;
 import baseDatos.UsuarioBd;
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class Usuario {
     private String apellidos;
     private String direccion;
     private int telefono;
-    private String corrreo;
+    private String correo;
     private String correoConfirmacion;
     private String password;
     private String passwordConfirmacion;
@@ -35,14 +36,18 @@ public class Usuario {
     public String getIdentificacion() {
         return identificacion;
     }
-
+    
+    public Usuario(){
+        
+    }
+    
     public Usuario(String identificacion, String nombres, String apellidos, String direccion, int telefono, String corrreo, String correoConfirmacion, String password, String passwordConfirmacion, TipoUsuario rol) {
         this.identificacion = identificacion;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.corrreo = corrreo;
+        this.correo = corrreo;
         this.correoConfirmacion = correoConfirmacion;
         this.password = password;
         this.passwordConfirmacion = passwordConfirmacion;
@@ -123,11 +128,23 @@ public class Usuario {
     }
 
     public String getCorrreo() {
-    return corrreo;
+    return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
     public void agregarUsuario (Usuario usuarioNuevo){
@@ -135,6 +152,12 @@ public class Usuario {
         nuevoUsuariobd.crearUsuario(usuarioNuevo);
     }
     
+    public static Usuario leerUsuario (String identificacion){
+        UsuarioBd nuevaConsulta = new UsuarioBd();
+        Usuario u1 = nuevaConsulta.leerUsuario(identificacion);
+        System.out.println(u1);
+        return u1;
+    }
     
     /*public void agregarUsuario(Usuario usuarioNuevo){
      listaUsuario.add(usuarioNuevo);
@@ -155,5 +178,11 @@ public class Usuario {
     private String generarIdUusario(){
         return identificacion + contadorIdUsuario++;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "identificacion=" + identificacion + ", nombres=" + nombres + ", apellidos=" + apellidos + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + ", password=" + password + ", rol=" + rol + ", idUsuario=" + idUsuario + '}';
+    }
+    
     
 }

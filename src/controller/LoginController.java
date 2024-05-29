@@ -4,6 +4,7 @@
  */
 package controller;
 
+import baseDatos.UsuarioBd;
 import java.io.IOException;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -46,7 +47,8 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnResetContrasenia;
     
-    Mensajes mostrarAlerta = new Mensajes();  
+    Mensajes mostrarAlerta = new Mensajes();
+    UsuarioBd nuevoUsuarioBd = new UsuarioBd();
     
     @FXML
     private void eventKey(KeyEvent event){
@@ -55,13 +57,11 @@ public class LoginController implements Initializable {
     
     @FXML // Login principal del programa
     private void eventAction (ActionEvent event){
-        String cui = "abc";
-        String pass = "123";
         
         String identificacion = txUsuario.getText();
         String contrasenia = txContrasenia.getText();
         
-        if (identificacion.equals(cui) && contrasenia.equals(pass)){
+        if (nuevoUsuarioBd.verificarUsuario(identificacion, contrasenia)){
         
             try {
                 cerrarVentana();
@@ -83,7 +83,7 @@ public class LoginController implements Initializable {
         
     }
     
-    @FXML // Llama a la ventana para crear usuario
+    @FXML // Llama a la ventana para crear usuario cliente
     private void eventAction2(ActionEvent event){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/visual/CrearUsuario.fxml"));
