@@ -87,6 +87,15 @@ public class Libro {
         nuevoLibroBd.crearLibro(nuevoLibro);
     }
     
+    public void listaLibros (){
+        LibroBd a = new LibroBd();
+        
+        ArrayList <Libro> e = a.mostrarTodo();
+        for(Libro libro:e){
+            System.out.println(libro);
+        }
+        //return e;
+    }
     
     /*public void agregarLibro(Libro nuevoLibro){
         listaLibros.add(nuevoLibro);
@@ -100,4 +109,10 @@ public class Libro {
         }
     }
     */
+
+    @Override
+    public String toString() {
+        return  isbn + titulo +  autor +  anioPublicacion +  editorial +  cantidadLibros;
+    }
+    
 }

@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modelado.Admin;
+import modelado.Libro;
 import modelado.Usuario;
 
 /**
@@ -26,12 +27,17 @@ public class GestionBiblioteca extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+     // @param args the command line arguments
+     
     public static void main(String[] args) {
         // TODO code application logic here
         launch(args);
+        
+
+        //System.out.println(prueba.listaLibros());
+            
+        
        
     }  
 }

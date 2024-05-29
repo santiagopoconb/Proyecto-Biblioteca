@@ -5,6 +5,7 @@
 package baseDatos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelado.Libro;
@@ -179,6 +180,49 @@ public class LibroBd {
                 }
             }
         } 
+    }
+    
+    public ArrayList<Libro> mostrarTodo(){
+        Statement st = null;
+        ResultSet rs = null;
+        ArrayList<Libro> a = new ArrayList();
+        
+        try {          
+            String sql ="""
+                                    SELECT * FROM libro
+                                    """;
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                Libro e = new Libro();
+                
+                e.setIsbn(rs.getString("isbn"));
+                e.setTitulo(rs.getString("titulo"));
+                e.setAutor(rs.getString("autor"));
+                e.setAnioPublicacion(rs.getInt("anio_publicacion"));
+                e.setEditorial(rs.getString("editorial"));
+                e.setCantidadLibros(rs.getInt("cantidad_libros"));
+                
+                a.add(e);
+            }
+            return a;
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null){
+                    rs.close();
+                } 
+                
+                if (st != null){
+                st.close();
+                }        
+            } catch (SQLException ex) {
+                    Logger.getLogger(LibroBd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        return null;
     }
     
 }
