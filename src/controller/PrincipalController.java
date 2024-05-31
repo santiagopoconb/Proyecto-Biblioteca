@@ -65,7 +65,8 @@ public class PrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-         btnMatenimiento.setOnAction(event -> vistaVentana("/visual/Mantenimiento.fxml"));
+        btnBuscarLibro.setOnAction(event -> vistaVentana("/visual/BuscarLibro.fxml"));
+        btnMatenimiento.setOnAction(event -> vistaVentana("/visual/Mantenimiento.fxml"));
     }  
     
     // Metodo que llama a la venta a mostar según el boton seleccionado

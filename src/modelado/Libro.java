@@ -6,13 +6,16 @@ package modelado;
 
 import baseDatos.LibroBd;
 import java.util.ArrayList;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.ObservableList;
 
 
 /**
  *
  * @author santi
  */
-public class Libro {
+public class Libro{
     private String isbn;
     private String titulo;
     private String autor;
@@ -20,10 +23,12 @@ public class Libro {
     private String editorial;
     private int cantidadLibros;
     ArrayList<Libro> listaLibros = new ArrayList<>();
+    private ObservableList<Libro> libros;
+    private BooleanProperty seleccion;
     
     public Libro(){
-        
-    }
+       this.seleccion = new SimpleBooleanProperty(false);
+       }
     
     public Libro(String isbn, String titulo, String autor, int anioPublicacion, String editorial, int cantidadLibros) {
         this.isbn = isbn;
@@ -32,12 +37,35 @@ public class Libro {
         this.anioPublicacion = anioPublicacion;
         this.editorial = editorial;
         this.cantidadLibros = cantidadLibros;
+        this.seleccion = new SimpleBooleanProperty(false);
     }  
+
+    public boolean isSeleccion(){
+        return seleccion.get();
+    }
     
+    public void setSeleccion(boolean seleccion) {
+        this.seleccion.set(seleccion);
+    }
+    
+    public BooleanProperty seleccionProperty (){
+        return seleccion;
+    }
+        
     public String getIsbn() {
         return isbn;
     }
 
+    public BooleanProperty getSeleccion() {
+        return seleccion;
+    }
+
+    public void setSeleccion(BooleanProperty seleccion) {
+        this.seleccion = seleccion;
+    }
+
+    
+    
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
@@ -90,11 +118,8 @@ public class Libro {
     public void listaLibros (){
         LibroBd a = new LibroBd();
         
-        ArrayList <Libro> e = a.mostrarTodo();
-        for(Libro libro:e){
-            System.out.println(libro);
-        }
-        //return e;
+        ArrayList<Libro> e = a.mostrarTodo();
+        libros.addAll(e);
     }
     
     /*public void agregarLibro(Libro nuevoLibro){

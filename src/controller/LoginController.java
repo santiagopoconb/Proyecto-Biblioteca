@@ -44,9 +44,6 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnAgregarUsuarioCliente;
     
-    @FXML
-    private Button btnResetContrasenia;
-    
     Mensajes mostrarAlerta = new Mensajes();
     UsuarioBd nuevoUsuarioBd = new UsuarioBd();
     
@@ -100,11 +97,6 @@ public class LoginController implements Initializable {
         }
     }
     
-    @FXML
-    private void eventAction3(ActionEvent event){
-    
-    }
-       
     private void cerrarVentana (){
         Stage stage = (Stage) btnIngresar.getScene().getWindow();
         stage.close();
